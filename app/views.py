@@ -1,9 +1,12 @@
+from flask import Flask
 from app import app
 
-@app.route("/")
-def home(): 
-    return "home"
+@app.route('/')
+@app.route('/home')
+@app.route('/practice')
+def practice(): 
+    return 'practice'
 
-@app.route("/about")
+@app.route('/about')
 def about(): 
-    return "about"
+    return 'about'

@@ -1,8 +1,7 @@
-# Flask Config 
 from flask import Flask
 app = Flask(__name__)
 
-print("hello world")
+app.config['SECRET_KEY'] = os.getenv('CHINESE_SWATTER_SECRET_KEY') 
 
 from app import views
 
