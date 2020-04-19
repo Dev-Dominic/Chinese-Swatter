@@ -9,6 +9,24 @@ Flask Web application that provides resources to help students study/practice Ch
 
 ## Project Structure
 
+1. Front-end
+    - practice page
+    - about page
+    - Use of ajax to handle game
+
+2. Back-end
+    - Routing endpoints
+    - Character Models
+        - id
+        - hanzi
+        - pinyin
+        - english
+        - book_volume
+        - character_set
+
+3. Script to create character sets
+    - Query google translate API
+
 ## Documentation 
 
 
