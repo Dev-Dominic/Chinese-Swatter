@@ -18,11 +18,15 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Database config
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silences error messages
+
+# Setup database instace of SQLAlchemy 
+# and Migration creation of migration instance
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 from app import views, models # Loading views and models
