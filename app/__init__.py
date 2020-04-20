@@ -2,8 +2,8 @@
 
 import os
 
-# from dotenv import load_dotenv # Loading environment variables from .env file
-# load_dotenv()
+from dotenv import load_dotenv # Loading environment variables from .env file
+load_dotenv()
 
 # Flask modules
 

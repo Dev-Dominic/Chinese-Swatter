@@ -1,6 +1,12 @@
 #!/usr/bin/python
 
+# Python imports
+
 import psycopg2
+import os
+
+from dotenv import load_dotenv # Loading environment variables from .env file
+load_dotenv()
 
 def setup(): 
     """Setups project database 
@@ -16,12 +22,15 @@ def setup():
         None
 
     """
-
-    db = config.getCredentials() # Database credentials
+    db = {
+        'DB_NAME': os.getenv('DB_NAME'),
+        'DB_USER': os.getenv('DB_USER'),
+        'DB_PASSWORD': os.getenv('DB_PASSWORD'),
+    }
 
     conn = psycopg2.connect(
         user="postgres",
-        password=""
+        password="password"
     ) # Connecting to database  
 
     with conn: 
@@ -35,17 +44,14 @@ def setup():
             cur.execute(f'DROP DATABASE IF EXISTS "{db["DB_NAME"]}" ')  
             cur.execute(f'CREATE DATABASE "{db["DB_NAME"]}" ')
 
-
             cur.execute(f'DROP USER IF EXISTS "{db["DB_USER"]}" ')
             cur.execute(f"CREATE USER {db['DB_USER']} WITH PASSWORD '{db['DB_PASSWORD']}' ")
 
             cur.execute(f'GRANT ALL PRIVILEGES ON DATABASE "{db["DB_NAME"]}" to "{db["DB_USER"]}" ')
 
             conn.commit()  
-        except e:
-            print(f"An Error occured during setup: {e}")
+        except Exception as e:
+            print(f'An Error occured during setup: {e}')
 
 if __name__ == "__main__":
     setup()
-
-
