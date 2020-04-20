@@ -20,16 +20,13 @@ class Character(db.Model):
     book_volume = db.Column(db.Integer, nullable=False)
     character_set = db.Column(db.Integer, nullable=False)
 
-    # Attribute list
-    attrs = ['hanzi', 'pinyin', 'english', 'book_volume', 'character_set']
-
     def __init__(self, hanzi, pinyin, english, book_volume, character_set):
         """ Character constructor """
-        this.hanzi = hanzi
-        this.pinyin = pinyin
-        this.english = english
-        this.book_volume = book_volume
-        this.character_set = character_set
+        self.hanzi = hanzi
+        self.pinyin = pinyin
+        self.english = english
+        self.book_volume = book_volume
+        self.character_set = character_set
 
     def __repr__(self): 
         """Overriding string representaiton of Character object 
@@ -41,9 +38,6 @@ class Character(db.Model):
             objFormat : String format representation of Character Object
 
         """
-        # str used to make sure that integer values for 
-        # Attributes such as book_volume and characte_set are
-        # converted to Strings
-
-        objFormat = ' : '.join([str(attr_value) for attr_value in attrs.values()])
+        objFormat = f'{self.hanzi} : {self.pinyin} : {self.english} : \
+        {self.book_volume} : {self.character_set}'
         return objFormat 
