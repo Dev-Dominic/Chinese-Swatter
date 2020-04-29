@@ -28,13 +28,32 @@ Flask Web application that provides resources to help students study/practice Ch
         - character_set
 
 3. Script to create character sets
-    - Query first google translate API using pinyin to get characters
+    - Query first google inputtools using pinyin to get characters
     - Query official google translate API to ensure character matches english translation
     - Create new Chinese Character Model 
     - Append new model to list
     - After retrieving all requested characters for a given set commit to database
 
 ## Documentation 
+
+### Google Inputtools
+
+**URL: https://www.google.com/inputtools/request**
+
+Query Params: 
+    - ime (special character type which would be *pinyin* in this case)
+    - num (the amount of characters to generate)
+    - text (query text) 
+
+### Official Google API v2
+
+**URL : https://translation.googleapis.com/language/translate/v2**
+
+Query Params: 
+    - key (google translate issued API KEY) 
+    - q (query text, which can be a list of strings)
+    - source (language to translate from, simple chinese 'zh-CN') 
+    - target (language to translate to, english 'en') 
 
 ## Contribution 
 
